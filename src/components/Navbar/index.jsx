@@ -12,6 +12,8 @@ import {
   Section,
   Wrapper
 } from './style';
+import Button from '../Generic/Button';
+import Filter from '../Filter';
 
 export default function Navbar () {
 
@@ -28,8 +30,8 @@ export default function Navbar () {
           </Section>
           <Section>
             {
-              navbar.map(({ title, path }, index) => {
-                return (
+              navbar.map(({ title, path, hidden }, index) => {
+                return !hidden && (
                   <Link className={({ isActive }) => isActive && 'active'} key={index} to={path}>
                     {title}
                   </Link>
@@ -38,10 +40,11 @@ export default function Navbar () {
             }
           </Section>
           <Section>
-            <button>Sign in</button>
+            <Button onClick={() => navigate('/signin')} type='dark' width='128'>Sign in</Button>
           </Section>
         </Wrapper>
       </Main>
+      <Filter />
       <Outlet />
     </Container >
   )
