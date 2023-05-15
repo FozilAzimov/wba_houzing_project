@@ -45,6 +45,7 @@ width: 30px;
 
 const LogoTitle = styled.h3`
 margin-left: 12px;
+padding-top: 10px;
 `;
 
 const Link = styled(NavLink)`

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import {
   Container,
@@ -6,7 +6,7 @@ import {
   Wrapper
 } from './style';
 
-export default function Input ({
+export const Input = forwardRef(({
   onClick,
   type,
   width,
@@ -15,12 +15,12 @@ export default function Input ({
   name,
   icon,
   value,
-  dafeultValue
-}) {
+  dafeultValue }, ref) => {
   return (
     <Wrapper>
       <Icon>{icon}</Icon>
       <Container
+        ref={ref}
         onClick={onClick}
         type={type}
         width={width}
@@ -33,4 +33,6 @@ export default function Input ({
       />
     </Wrapper>
   )
-}
+});
+
+export default Input;

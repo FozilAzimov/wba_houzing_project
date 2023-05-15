@@ -24,7 +24,22 @@ padding-bottom: 10px;
 gap: 20px;
 `;
 
+const MenuWrapper = styled.div`
+width: 920px;
+height: 409px;
+padding: 30px;
+background: #fff;
+`
+
+const Section = styled.div`
+display: flex;
+gap: 20px;
+margin-bottom: 20px;
+`
+
 export {
   Container,
   Icons,
+  MenuWrapper,
+  Section,
 }
