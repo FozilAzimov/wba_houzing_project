@@ -1,11 +1,17 @@
 import React from 'react';
 
-import { Container } from './style';
+import HomeCrousel from '../Corousel';
+import HouseCard from '../HouseCard';
+
+import {
+  Container,
+} from './style';
 
 export default function Home () {
   return (
     <Container>
-      <h1>Home Page</h1>
+      <HomeCrousel />
+      <HouseCard />
     </Container>
   )
 }
