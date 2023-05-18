@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-import HouseCard from '../HouseCard';
-
 import { Container } from './style';
-import { useLocation } from 'react-router-dom';
 
+import { useLocation } from 'react-router-dom';
+import HouseCard from '../HouseCard';
 
 export default function Properties () {
   // const { REACT_APP_BASE_URL: { url } } = process.env;
@@ -18,7 +17,6 @@ export default function Properties () {
       .then((res) => res.json())
       .then((res) => setData(res?.data || []))
   }, [search])
-
 
   return (
     <Container>

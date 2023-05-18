@@ -17,10 +17,6 @@ export default function HomeCrousel () {
 
   const slider = useRef();
 
-  const onChange = (currentSlide) => {
-    console.log(currentSlide);
-  };
-
   const onMove = ({ target: { dataset: { name } } }) => {
     if (name === 'left') slider.current.prev();
     if (name === 'right') slider.current.next();
@@ -28,8 +24,8 @@ export default function HomeCrousel () {
 
   return (
     <Container>
-      <Arrow onClick={onMove} data-name='left' />
-      <Carousel ref={slider} afterChange={onChange}>
+      <Arrow arrow='left' onClick={onMove} data-name='left' />
+      <Carousel ref={slider}>
         <Img src={img1} />
         <Img src={img2} />
         <Img src={img1} />
@@ -41,7 +37,7 @@ export default function HomeCrousel () {
         <Content.Description>112 Glenwood Ave Hyde Park, Boston, MA</Content.Description>
         <Content.Price>$5,250/mo</Content.Price>
       </Content>
-      <Arrow right onClick={onMove} data-name='right' />
+      <Arrow arrow='right' onClick={onMove} data-name='right' />
     </Container>
   )
 }

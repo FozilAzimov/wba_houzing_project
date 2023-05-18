@@ -18,7 +18,9 @@ Icons.Love = styled(love)``;
 
 const Container = styled.div`
 height: 429px;
-width: 380px;
+width: 100%;
+max-width: 380px;
+min-width: 330px;
 border-radius: 3px;
 background: #FFFFFF;
 border: 1px solid #E6E9EC;
@@ -32,8 +34,9 @@ border: 1px solid #E6E9EC;
 
 const Img = styled.img`
 width: 100%;
-height: 220px;
-min-height: 220px;
+max-height: 220px;
+min-height: 200px;
+border-radius: 3px 3px 0 0;
 `
 
 const Content = styled.div`

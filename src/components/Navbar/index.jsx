@@ -1,8 +1,5 @@
 import React from 'react';
 
-import { Outlet, useNavigate } from 'react-router-dom';
-import { navbar } from '../../utils/navbar';
-
 import {
   Container,
   Link,
@@ -12,6 +9,9 @@ import {
   Section,
   Wrapper
 } from './style';
+
+import { Outlet, useNavigate } from 'react-router-dom';
+import { navbar } from '../../utils/navbar';
 import Button from '../Generic/Button';
 import Filter from '../Filter';
 

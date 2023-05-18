@@ -17,7 +17,7 @@ background: var(--colorPrimary);
 
 const Wrapper = styled.div`
 width: 100%;
-/* max-width: 1440px; */
+max-width: 1440px;
 height: 64px;
 display: flex;
 align-items: center;

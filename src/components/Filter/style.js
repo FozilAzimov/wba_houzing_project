@@ -17,11 +17,14 @@ margin-right: 8px;
 `;
 
 const Container = styled.div`
+width: 100%;
+max-width: 1440px;
 display: flex;
 padding: var(--padding);
 padding-top: 10px;
 padding-bottom: 10px;
 gap: 20px;
+margin: auto;
 `;
 
 const MenuWrapper = styled.div`

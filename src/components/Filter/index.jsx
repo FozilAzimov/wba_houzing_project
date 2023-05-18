@@ -57,7 +57,7 @@ export default function Filter () {
             onChange={onChange}
             defaultValue={query.get('city')}
             ref={cityRef}
-            name='city'
+            name='address'
             placeholder='City' />
           <Input
             onChange={onChange}

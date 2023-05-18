@@ -3,9 +3,28 @@ import styled from "styled-components";
 import { ReactComponent as arrow } from "../../assets/icons/arrow.svg";
 
 const Container = styled.div`
-height: 571px;
+height: fit-content;
 position: relative;
 `;
+
+const getRotate1 = ({ arrow }) => {
+  switch (arrow) {
+    case 'right': return 'rotate(180deg)';
+    default: return;
+  }
+}
+const getRotate2 = ({ arrow }) => {
+  switch (arrow) {
+    case 'left': return '32px';
+    default: return;
+  }
+}
+const getRotate3 = ({ arrow }) => {
+  switch (arrow) {
+    case 'right': return '32px';
+    default: return;
+  }
+}
 
 const Arrow = styled(arrow)`
 height: 45px;
@@ -16,9 +35,9 @@ background: rgba(255,255,255,.2);
 position: absolute;
 z-index: 999;
 top: 50%;
-left: ${({ right }) => !right && '32px'};
-right: ${({ right }) => right && '32px'};
-transform: ${({ right }) => right && 'rotate(180deg)'};
+left: ${getRotate2};
+right: ${getRotate3};
+transform: ${getRotate1};
 cursor: pointer;
 :hover{
   background: rgba(255,255,255,.3);
