@@ -42,6 +42,12 @@ body {
   color: #0D263B;
 }
 
+.inline {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .info {
   font-family: 'Montserrat';
   font-style: normal;
@@ -49,4 +55,16 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #696969;
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown .ant-dropdown-menu,
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown-menu-submenu .ant-dropdown-menu {
+  padding: 0;
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item,
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown-menu-submenu .ant-dropdown-menu .ant-dropdown-menu-item,
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-submenu-title,
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown-menu-submenu .ant-dropdown-menu .ant-dropdown-menu-submenu-title {
+  padding: 0;
 }

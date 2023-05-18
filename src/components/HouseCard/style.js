@@ -28,12 +28,12 @@ border: 1px solid #E6E9EC;
   drop-shadow(0 7px 46px rgba(0,0,0,0.06))
   drop-shadow(0 8px 15px rgba(0,0,0,0.06));
 }
-  margin: 100px;
 `;
 
 const Img = styled.img`
 width: 100%;
 height: 220px;
+min-height: 220px;
 `
 
 const Content = styled.div`

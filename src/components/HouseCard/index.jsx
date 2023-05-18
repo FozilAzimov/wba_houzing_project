@@ -12,38 +12,49 @@ import {
   LoveBack,
 } from './style';
 
-export default function HouseCard ({ url, title, info, bed, bath, garage, ruler }) {
+export default function HouseCard ({ data = {} }) {
+
+  const {
+    attachments,
+    city,
+    country,
+    description,
+    address,
+    houseDetails: { beds, bath, garage, area },
+    salePrice,
+    price
+  } = data
 
   return (
     <Container>
-      <Img src={url || noImg} />
+      <Img src={attachments && attachments[0]?.imgPath || noImg} />
       <Content top>
-        <div className="subTitle">{title || 'New Apartment Nice Wiew'}</div>
-        <div className="info">{info || 'Quincy St, Brooklyn, NY, USA'}</div>
+        <div className="subTitle inline">{city}, {country}, {description}</div>
+        <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'}</div>
         <Details>
           <Details.Item>
             <Icons.Bed />
-            <div className="info">{bed || 0} Bed</div>
+            <div className="info">Bed {beds || 0}</div>
           </Details.Item>
           <Details.Item>
             <Icons.Bath />
-            <div className="info">{bath || 0} Bath</div>
+            <div className="info">Bath {bath || 0}</div>
           </Details.Item>
           <Details.Item>
             <Icons.Garage />
-            <div className="info">{garage || 0} Garage</div>
+            <div className="info">Garage {garage || 0}</div>
           </Details.Item>
           <Details.Item>
             <Icons.Ruler />
-            <div className="info">{ruler || 0} Ruler</div>
+            <div className="info">Area {area || 0}</div>
           </Details.Item>
         </Details>
       </Content>
       <Divider />
       <Content>
         <Details.Item>
-          <div className="info">$2,800/mo</div>
-          <div className="subTitle">$7,500/mo</div>
+          <div className="info">${salePrice || 0}/mo</div>
+          <div className="subTitle">${price || 0}/mo</div>
         </Details.Item>
         <Details.Item center>
           <Icons.Resize />

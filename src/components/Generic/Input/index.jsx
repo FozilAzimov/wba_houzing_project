@@ -7,6 +7,7 @@ import {
 } from './style';
 
 export const Input = forwardRef(({
+  onChange,
   onClick,
   type,
   width,
@@ -15,11 +16,13 @@ export const Input = forwardRef(({
   name,
   icon,
   value,
-  dafeultValue }, ref) => {
+  defaultValue
+}, ref) => {
+
   return (
     <Wrapper>
       <Icon>{icon}</Icon>
-      <Container
+      <Container onChange={onChange}
         ref={ref}
         onClick={onClick}
         type={type}
@@ -29,7 +32,7 @@ export const Input = forwardRef(({
         name={name}
         icon={icon}
         value={value}
-        defaultValue={dafeultValue}
+        defaultValue={defaultValue}
       />
     </Wrapper>
   )
