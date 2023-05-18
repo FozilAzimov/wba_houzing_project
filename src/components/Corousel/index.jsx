@@ -41,7 +41,7 @@ export default function HomeCrousel () {
         <Content.Description>112 Glenwood Ave Hyde Park, Boston, MA</Content.Description>
         <Content.Price>$5,250/mo</Content.Price>
       </Content>
-      <Arrow onClick={onMove} data-name='right' gradus />
+      <Arrow right onClick={onMove} data-name='right' />
     </Container>
   )
 }

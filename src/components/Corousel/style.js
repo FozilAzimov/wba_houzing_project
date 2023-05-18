@@ -16,9 +16,9 @@ background: rgba(255,255,255,.2);
 position: absolute;
 z-index: 999;
 top: 50%;
-left: ${({ gradus }) => !gradus && '32px'};
-right: ${({ gradus }) => gradus && '32px'};
-transform: ${({ gradus }) => gradus && 'rotate(180deg)'};
+left: ${({ right }) => !right && '32px'};
+right: ${({ right }) => right && '32px'};
+transform: ${({ right }) => right && 'rotate(180deg)'};
 cursor: pointer;
 :hover{
   background: rgba(255,255,255,.3);
