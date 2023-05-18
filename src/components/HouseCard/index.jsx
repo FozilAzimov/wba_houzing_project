@@ -27,7 +27,7 @@ export default function HouseCard ({ data = {} }) {
 
   return (
     <Container>
-      <Img src={attachments && attachments[0]?.imgPath || noImg} />
+      <Img src={(attachments[0]?.imgPath) || noImg} />
       <Content top>
         <div className="subTitle inline">{city}, {country}, {description}</div>
         <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'}</div>
