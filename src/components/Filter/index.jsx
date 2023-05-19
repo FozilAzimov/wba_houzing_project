@@ -49,14 +49,12 @@ export default function Filter () {
     fetch(`http://localhost:8081/api/v1/houses/list`)
       .then((res) => res.json())
       .then((res) => setData(res?.data || []));
-    //eslint-disable-nex-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     let [resoult] = data.filter(ctg => ctg.id === Number(query.get('category_id')));
     resoult?.category?.name && setValue(resoult?.category?.name);
-    //eslint-disable-nex-line react-hooks/exhaustive-deps
-  }, [location?.search, data]);
+  }, [location?.search, data, query]);
 
   const items = [
     {
