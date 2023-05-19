@@ -21,8 +21,8 @@ export default function Properties () {
   return (
     <Container>
       {
-        data.map((value, index) => {
-          return <HouseCard key={index} data={value} />
+        data.map((value) => {
+          return <HouseCard key={value.id} data={value} />
         })
       }
     </Container>

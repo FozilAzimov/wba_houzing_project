@@ -21,17 +21,17 @@ export default function HouseCard ({ data = {} }) {
     category,
     description,
     address,
-    houseDetails: { beds, bath, garage, area },
+    houseDetails: { beds, bath, garage, area, room },
     salePrice,
     price
-  } = data
+  } = data;
 
   return (
     <Container>
       <Img src={(attachments && attachments[0]?.imgPath) || noImg} />
       <Content top>
         <div className="subTitle inline">{city}, {country}, {description}</div>
-        <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'} - {category?.name || `Zo'r uy`}</div>
+        <div className="info">{address || 'Quincy St, Brooklyn, NY, USA'} - {category?.name || `Zo'r uy`} Rooms-{room || 0}</div>
         <Details>
           <Details.Item>
             <Icons.Bed />
@@ -47,7 +47,7 @@ export default function HouseCard ({ data = {} }) {
           </Details.Item>
           <Details.Item>
             <Icons.Ruler />
-            <div className="info">Area {area || 0}</div>
+            <div className="info">Area {area || 0}kv</div>
           </Details.Item>
         </Details>
       </Content>

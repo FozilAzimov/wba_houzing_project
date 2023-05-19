@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ReactComponent as houz } from "../../assets/icons/houz.svg";
 import { ReactComponent as filter } from "../../assets/icons/filter.svg";
 import { ReactComponent as search } from "../../assets/icons/search.svg";
+import { Select } from 'antd';
 
 const Icons = styled.div``;
 
@@ -40,9 +41,18 @@ gap: 20px;
 margin-bottom: 20px;
 `
 
+const SelectAntd = styled(Select)`
+width: 100%;
+min-width: 250px;
+max-width: 250px;
+height: 44px;
+color: var(--colorSecondary);
+`;
+
 export {
   Container,
   Icons,
   MenuWrapper,
   Section,
+  SelectAntd,
 }

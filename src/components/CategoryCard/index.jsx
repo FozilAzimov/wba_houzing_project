@@ -10,14 +10,16 @@ import {
   Img,
 } from './style';
 
-export default function CategoryCard ({ data: { name } = {} }) {
+export default function CategoryCard ({ onClick, data = {} }) {
+
+  const { category } = data;
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Img src={categoryImg || noImg} />
       <BlurCategory />
       <Content top>
-        {name || `Category name`}
+        {category?.name || `Category name`}
       </Content>
     </Container>
   )

@@ -1,35 +1,5 @@
 import styled from "styled-components";
 
-
-const getType = ({ type }) => {
-  switch (type) {
-    case 'dark':
-      return {
-        background: 'transparent',
-        border: '1px solid #fff',
-        color: '#fff'
-      };
-    case 'light':
-      return {
-        background: '#fff',
-        border: '1px solid #E6E9EC',
-        color: '#0D263B'
-      };
-    case 'primary':
-      return {
-        background: '#0061DF',
-        border: 'none',
-        color: '#fff'
-      };
-    default:
-      return {
-        background: '#0061DF',
-        border: 'none',
-        color: '#fff'
-      };
-  }
-}
-
 const Container = styled.input`
 display: flex;
 justify-content: center;
@@ -39,10 +9,19 @@ min-width: 120px;
 font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '14px')};
 width: ${({ width }) => (width ? `${width}px` : '100%')};
 height: ${({ height }) => (height ? `${height}px` : '44px')};
-/* ${getType} */
 outline:none;
 border: 1px solid #e6e9ec;
 padding-left: ${({ icon }) => icon ? '35px' : '20px'};
+transition: all 0.5s;
+:hover{
+  transition: all 0.5s;
+  border: 1px solid var(--backgroundPrimary);
+}
+:focus{
+  transition: all 0.5s;
+  border: 1px solid var(--backgroundPrimary);
+  box-shadow: 0 0 2px var(--backgroundPrimary)
+}
 `
 const Wrapper = styled.div`
 display: flex;
