@@ -14,8 +14,8 @@ export default function HousItem () {
       .then(res => {
         setData(res?.data || {});
       });
+    console.log(data);
   }, [params?.id]);
-
   return (
     <Container>
       <h1>House Item</h1>

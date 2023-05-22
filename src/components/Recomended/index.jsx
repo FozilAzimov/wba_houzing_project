@@ -28,7 +28,7 @@ export default function Recommended () {
     fetch(`${url}/houses/list`)
       .then((res) => res.json())
       .then((res) => setData(res?.data || []))
-  }, [])
+  }, [url]);
 
   return (
     <Container>

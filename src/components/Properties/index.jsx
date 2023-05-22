@@ -17,7 +17,7 @@ export default function Properties () {
     request({ url: `/houses/list${search}` }).then(res => {
       setData(res?.data || []);
     })
-  }, [search]);
+  }, [search, request]);
 
   const onSelect = (id) => {
     navigate(`/properties/${id}`);
