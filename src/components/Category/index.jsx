@@ -28,7 +28,7 @@ export default function Category () {
     fetch(`${url}/houses/list`)
       .then((res) => res.json())
       .then((res) => setData(res?.data || []))
-  }, [])
+  }, [url])
 
   return (
     <Container>
