@@ -2,27 +2,32 @@ import React, { useEffect, useState } from 'react';
 
 import { Container } from './style';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import HouseCard from '../HouseCard';
+import useRequest from '../../hooks/useRequest';
 
 export default function Properties () {
-  // const { REACT_APP_BASE_URL: { url } } = process.env;
 
   const { search } = useLocation();
-
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
+  const request = useRequest();
 
   useEffect(() => {
-    fetch(`http://localhost:8081/api/v1/houses/list${search}`)
-      .then((res) => res.json())
-      .then((res) => setData(res?.data || []))
-  }, [search])
+    request({ url: `/houses/list${search}` }).then(res => {
+      setData(res?.data || []);
+    })
+  }, [search]);
+
+  const onSelect = (id) => {
+    navigate(`/properties/${id}`);
+  }
 
   return (
     <Container>
       {
         data.map((value) => {
-          return <HouseCard key={value.id} data={value} />
+          return <HouseCard onClick={() => onSelect(value.id)} key={value.id} data={value} />
         })
       }
     </Container>

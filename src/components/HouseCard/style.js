@@ -16,6 +16,10 @@ Icons.Ruler = styled(ruler)``;
 Icons.Resize = styled(resize)``;
 Icons.Love = styled(love)``;
 
+const Wrapper = styled.div`
+padding: ${({ gap }) => gap && `${gap}px`};
+`
+
 const Container = styled.div`
 height: 429px;
 width: 100%;
@@ -90,4 +94,5 @@ export {
   Icons,
   Img,
   LoveBack,
+  Wrapper,
 };
