@@ -2,18 +2,18 @@ import React, { useEffect, useState } from 'react';
 
 import { Container, Content } from './style';
 
-import CategoryCard from '../CategoryCard';
 import Slider from "react-slick";
 import { useNavigate } from 'react-router-dom';
+import HouseCard from '../HouseCard';
 
-export default function Category () {
+export default function Similar () {
   const { REACT_APP_SECRET_URL: url } = process.env;
 
   const settings = {
     className: "center",
     centerMode: true,
     infinite: true,
-    centerPadding: "20px",
+    centerPadding: "25px",
     slidesToShow: 3,
     speed: 500,
     adaptiveHeight: true,
@@ -28,21 +28,22 @@ export default function Category () {
     fetch(`${url}/houses/list`)
       .then((res) => res.json())
       .then((res) => setData(res?.data || []))
-  }, [])
+  }, []);
 
   return (
     <Container>
       <Content>
-        <div className='title'>Category</div>
+        <div className='title'>Similar listings</div>
         <div className='info'>Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.</div>
       </Content>
 
       <Slider {...settings}>
         {
           data.map(value => {
-            return <CategoryCard
+            return <HouseCard
+              gap={10}
               key={value.id}
-              onClick={() => navigate(`/properties?category_id=${value?.id}`)}
+              onClick={() => navigate(`/properties/${value?.id}`)}
               data={value} />
           })
         }

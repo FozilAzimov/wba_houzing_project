@@ -9,6 +9,22 @@ padding: var(--padding);
 max-width: 1440px;
 width: 100%;
 margin: auto;
+margin-top: 70px;
 `;
 
-export { Container }
+const Wrapper = styled.div`
+margin-top: 16px;
+`
+
+const Center = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 48px auto;
+`
+
+export {
+  Center,
+  Container,
+  Wrapper
+};

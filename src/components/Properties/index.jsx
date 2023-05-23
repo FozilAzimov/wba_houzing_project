@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container } from './style';
+import {
+  Center,
+  Container,
+  Wrapper
+} from './style';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import HouseCard from '../HouseCard';
 import useRequest from '../../hooks/useRequest';
+import Button from '../Generic/Button';
 
 export default function Properties () {
 
@@ -17,19 +22,31 @@ export default function Properties () {
     request({ url: `/houses/list${search}` }).then(res => {
       setData(res?.data || []);
     })
-  }, [search, request]);
+  }, [search]);
 
   const onSelect = (id) => {
     navigate(`/properties/${id}`);
   }
 
   return (
-    <Container>
-      {
-        data.map((value) => {
-          return <HouseCard onClick={() => onSelect(value.id)} key={value.id} data={value} />
-        })
-      }
-    </Container>
+    <Wrapper>
+      <Center>
+        <div className="title">Properties</div>
+        <div className="info">Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.</div>
+      </Center>
+      <Container>
+        {
+          data.map((value) => {
+            return <HouseCard
+              key={value.id}
+              onClick={() => onSelect(value.id)}
+              data={value} />
+          })
+        }
+      </Container>
+      <Center>
+        <Button width={250}>Show more</Button>
+      </Center>
+    </Wrapper>
   )
 }

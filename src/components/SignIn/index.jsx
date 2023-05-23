@@ -48,7 +48,6 @@ export default function SignIn () {
         }
         else warning();
       })
-    console.log(error);
   }
 
   return (

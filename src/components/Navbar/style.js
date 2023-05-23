@@ -9,6 +9,13 @@ flex-direction: column;
 justify-content: center;
 `;
 
+const Nav = styled.div`
+position: sticky;
+top: 0;
+z-index: 1000;
+box-shadow: 0 -5px 25px #999;
+`
+
 const Main = styled.div`
 display: flex;
 justify-content: center;
@@ -60,6 +67,7 @@ export {
   Logo,
   LogoTitle,
   Main,
+  Nav,
   Section,
   Wrapper
 }

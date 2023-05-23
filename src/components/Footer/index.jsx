@@ -13,6 +13,10 @@ import {
 
 export default function Footer () {
 
+  const onScrollTop = () => {
+    window.scrollTo(0, 0);
+  }
+
   return (
     <Container>
       <Wrapper>
@@ -64,7 +68,7 @@ export default function Footer () {
         </FooterContent>
         <FooterContent>
           <LogoTitle small>Copyright © 2021 CreativeLayers. All Right Reserved.</LogoTitle>
-          <TopButton><Icons.Arrow /></TopButton>
+          <TopButton onClick={onScrollTop}><Icons.Arrow /></TopButton>
         </FooterContent>
       </Content.Footer>
     </Container >

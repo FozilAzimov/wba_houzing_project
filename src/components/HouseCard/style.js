@@ -38,8 +38,7 @@ border: 1px solid #E6E9EC;
 
 const Img = styled.img`
 width: 100%;
-max-height: 220px;
-min-height: 200px;
+height: 220px;
 border-radius: 3px 3px 0 0;
 `
 
@@ -57,11 +56,19 @@ display: flex;
 justify-content: space-between;
 `
 
+const getItem = ({ type }) => {
+  switch (type) {
+    case 'center': return 'center';
+    case 'start': return 'start';
+    default: return 'end';
+  }
+}
+
 Details.Item = styled.div`
 height: 44px;
 display: flex;
-align-items: center;
 flex-direction: ${({ center }) => center ? 'row' : 'column'};
+align-items: ${getItem};
 justify-content: ${({ center }) => center ? 'center' : 'space-between'};
 `
 

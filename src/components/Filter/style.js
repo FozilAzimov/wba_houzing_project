@@ -19,6 +19,10 @@ margin-right: 8px;
 
 const Container = styled.div`
 width: 100%;
+background: #fff;
+`;
+const Wrapper = styled.div`
+width: 100%;
 max-width: 1440px;
 display: flex;
 padding: var(--padding);
@@ -26,6 +30,7 @@ padding-top: 10px;
 padding-bottom: 10px;
 gap: 20px;
 margin: auto;
+background: #fff;
 `;
 
 const MenuWrapper = styled.div`
@@ -55,4 +60,5 @@ export {
   MenuWrapper,
   Section,
   SelectAntd,
+  Wrapper,
 }

@@ -28,7 +28,7 @@ export default function Recommended () {
     fetch(`${url}/houses/list`)
       .then((res) => res.json())
       .then((res) => setData(res?.data || []))
-  }, [url]);
+  }, []);
 
   return (
     <Container>
@@ -43,7 +43,7 @@ export default function Recommended () {
             return <HouseCard
               gap={10}
               key={value.id}
-              onClick={() => navigate(`/properties?category_id=${value?.id}`)}
+              onClick={() => navigate(`/properties/${value?.id}`)}
               data={value} />
           })
         }

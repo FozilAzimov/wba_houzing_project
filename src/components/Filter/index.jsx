@@ -6,6 +6,7 @@ import {
   MenuWrapper,
   Section,
   SelectAntd,
+  Wrapper,
 } from './style';
 
 import { Input, Button } from '../Generic';
@@ -13,6 +14,7 @@ import { Dropdown } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import uzeReplace from '../../hooks/useReplace';
 import useSearch from '../../hooks/useSearch';
+import useRequest from '../../hooks/useRequest';
 
 export default function Filter () {
 
@@ -20,6 +22,7 @@ export default function Filter () {
   const navigate = useNavigate();
   const location = useLocation();
   const query = useSearch();
+  const request = useRequest();
 
   const countryRef = useRef();
   const regionRef = useRef();
@@ -46,9 +49,9 @@ export default function Filter () {
   const [value, setValue] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:8081/api/v1/houses/list`)
-      .then((res) => res.json())
-      .then((res) => setData(res?.data || []));
+    request({ url: `/houses/list` }).then(res => {
+      setData(res?.data || []);
+    })
   }, []);
 
   useEffect(() => {
@@ -138,11 +141,13 @@ export default function Filter () {
 
   return (
     <Container>
-      <Input icon={<Icons.Houz />} placeholder={'Enter an address, neighborhood, city, or Zip code'} />
-      <Dropdown menu={{ items }} trigger={['click']} open={drop}>
-        <Button type='light' onClick={getDrop}><Icons.Filter /> Advenced</Button>
-      </Dropdown>
-      <Button><Icons.Search /> Search</Button>
+      <Wrapper>
+        <Input icon={<Icons.Houz />} placeholder={'Enter an address, neighborhood, city, or Zip code'} />
+        <Dropdown menu={{ items }} trigger={['click']} open={drop}>
+          <Button type='light' onClick={getDrop}><Icons.Filter /> Advenced</Button>
+        </Dropdown>
+        <Button><Icons.Search /> Search</Button>
+      </Wrapper>
     </Container >
   )
 }
