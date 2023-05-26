@@ -14,7 +14,16 @@ Icons.Bath = styled(bath)``;
 Icons.Garage = styled(garage)``;
 Icons.Ruler = styled(ruler)``;
 Icons.Resize = styled(resize)``;
-Icons.Love = styled(love)``;
+Icons.Love = styled(love)`
+& path{
+  fill: ${({ favorite }) => favorite ? '#fff' : '#696969'};
+}
+:active{
+& path{
+  fill: #fff;
+}
+}
+`;
 
 const Wrapper = styled.div`
 padding: ${({ gap }) => gap && `${gap}px`};
@@ -81,14 +90,14 @@ background: #E6E9EC;
 const LoveBack = styled.div`
 width: 35px;
 height: 35px;
-background: #F6F8F9;
+background: ${({ favorite }) => favorite ? '#CC5040' : '#F6F8F9'};
 border-radius: 50%;
 display: flex;
 justify-content: center;
 align-items: center;
 margin-left: 20px;
 :active{
-  background: #F0F0F0;
+  background: #CC5040;
   transform: scale(.9);
 }
 `

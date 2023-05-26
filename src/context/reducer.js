@@ -1,6 +1,6 @@
-export const reducer = (state, { type, action }) => {
+export const reducer = (state, { type, payload }) => {
   switch (type) {
-    case 'plus': return state;
+    case 'refetch': return { ...state, refetch: payload };
     default: return state;
   }
 }

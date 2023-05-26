@@ -61,12 +61,44 @@ color: #fff;
 padding: 0 32px;
 `
 
+const Menu = styled.div`
+padding: 16px;
+width: 130px;
+background: #fff;
+box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06),
+0px 7px 46px rgba(0, 0, 0, 0.06),
+0px 8px 15px rgba(0, 0, 0, 0.06);
+display: grid;
+flex-direction: column;
+align-items: start;
+gap: 16px;
+border-radius: 2px;
+position: absolute;
+right: -134px;
+top: -47px;
+`
+
+const List = styled.div`
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 20px;
+color: #000;
+:hover{
+  color: red;
+}
+`
+
+
 export {
   Container,
   Link,
+  List,
   Logo,
   LogoTitle,
   Main,
+  Menu,
   Nav,
   Section,
   Wrapper

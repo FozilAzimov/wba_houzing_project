@@ -41,7 +41,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 2px;
-min-width: 120px;
+min-width: ${({ minWidth }) => minWidth ? `${minWidth}px` : '120px'};
 cursor: pointer;
 transition: all .1s;
 font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '14px')};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import noImg from '../../assets/imgs/noimg.jpeg'
 
@@ -13,7 +13,13 @@ import {
   Wrapper,
 } from './style';
 
+import { message } from 'antd';
+import { PropertiesContext } from '../../context/properties';
+
 export default function HouseCard ({ data = {}, gap, onClick }) {
+  const { REACT_APP_SECRET_URL: url } = process.env;
+
+  const [state] = useContext(PropertiesContext);
 
   const {
     attachments,
@@ -24,8 +30,27 @@ export default function HouseCard ({ data = {}, gap, onClick }) {
     address,
     houseDetails: { beds, bath, garage, area, room },
     salePrice,
-    price
+    price,
+    favorite,
+    id,
   } = data;
+
+  const save = (event) => {
+    event?.stopPropagation();
+    fetch(`${url}/houses/addFavourite/${id}?favourite=${!favorite}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (favorite) res?.success && message.warning('House Deleted');
+        else res?.success && message.info('House Added!');
+        state.refetch && state.refetch();
+      })
+  }
+
   return (
     <Wrapper gap={gap}>
       <Container onClick={onClick}>
@@ -60,8 +85,8 @@ export default function HouseCard ({ data = {}, gap, onClick }) {
           </Details.Item>
           <Details.Item type='center' center>
             <Icons.Resize />
-            <LoveBack>
-              <Icons.Love />
+            <LoveBack onClick={save} favorite={favorite}>
+              <Icons.Love onClick={save} favorite={favorite} />
             </LoveBack>
           </Details.Item>
         </Content>

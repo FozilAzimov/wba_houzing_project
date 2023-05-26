@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 import {
   Center,
@@ -8,22 +8,34 @@ import {
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import HouseCard from '../HouseCard';
-import useRequest from '../../hooks/useRequest';
 import Button from '../Generic/Button';
+import { useQuery } from 'react-query';
+import { PropertiesContext } from '../../context/properties';
+
 
 export default function Properties () {
+  const { REACT_APP_SECRET_URL: url } = process.env;
 
   const { search } = useLocation();
-  const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const request = useRequest();
 
-  useEffect(() => {
-    request({ url: `/houses/list${search}` }).then(res => {
-      setData(res?.data || []);
-    })
+  const [, dispatch] = useContext(PropertiesContext);
+
+  const { refetch, data } = useQuery([search], async () => {
+
+    const res = await fetch(`${url}/houses/getAll/favouriteList`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+    });
+    return await res.json();
+
+  },
+
+    {
+      onSuccess: () => dispatch({ type: 'refetch', payload: refetch }),
+    }
     // eslint-disable-next-line react-hook/exhaustive-deps
-  }, [search]);
+  )
+
 
   const onSelect = (id) => {
     navigate(`/properties/${id}`);
@@ -32,17 +44,19 @@ export default function Properties () {
   return (
     <Wrapper>
       <Center>
-        <div className="title">Properties</div>
+        <div className="title">Favourites</div>
         <div className="info">Nulla quis curabitur velit volutpat auctor bibendum consectetur sit.</div>
       </Center>
       <Container>
-        {
-          data?.map((value) => {
+        {data?.data?.length
+          ? data?.data.map((value) => {
             return <HouseCard
               key={value.id}
               onClick={() => onSelect(value.id)}
               data={value} />
           })
+          :
+          <h1>No Data Found</h1>
         }
       </Container>
       <Center>

@@ -51,10 +51,9 @@ export default function HousItem () {
         setData(res?.data);
         window.scrollTo(0, 0);
       })
+    // eslint-disable-next-line react-hook/exhaustive-deps
   }, [params?.id]);
 
-
-  console.log(data);
 
   return (
     <Container>

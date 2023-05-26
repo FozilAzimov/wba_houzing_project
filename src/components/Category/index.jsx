@@ -28,7 +28,10 @@ export default function Category () {
     fetch(`${url}/houses/list`)
       .then((res) => res.json())
       .then((res) => setData(res?.data || []))
+    // eslint-disable-next-line react-hook/exhaustive-deps
   }, [])
+
+  console.log(data);
 
   return (
     <Container>

@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
@@ -92,4 +96,15 @@ body {
   background: var(--colorPrimary);
   padding: 10px;
   border-radius: 50%;
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown .ant-dropdown-menu,
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown-menu-submenu .ant-dropdown-menu {
+  background: none;
+  box-shadow: none;
+}
+
+:where(.css-dev-only-do-not-override-15rg2km).ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover {
+  background: none;
+  cursor: pointer;
 }

@@ -52,6 +52,7 @@ export default function Filter () {
     request({ url: `/houses/list` }).then(res => {
       setData(res?.data || []);
     })
+    // eslint-disable-next-line react-hook/exhaustive-deps
   }, []);
 
   useEffect(() => {
