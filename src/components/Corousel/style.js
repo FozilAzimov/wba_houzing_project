@@ -136,6 +136,7 @@ font-weight: 600;
 font-size: 28px;
 line-height: 36px;
 letter-spacing: -0.02em;
+margin-bottom: 48px;
 `
 
 const Details = styled.div`

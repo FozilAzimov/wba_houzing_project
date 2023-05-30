@@ -63,7 +63,7 @@ export default function MyProfile () {
             <div className="info"><s>{data?.salePrice} $</s></div>
             <div className="subTitle">{data?.price} $</div>
           </User>
-          <Button width={71} height={23} fontSize={10} minWidth={71}>FOR SALE</Button>
+          <Button width={71} minWidth={71} height={23} fontSize={10}>FOR SALE</Button>
         </User>
       },
       key: 'category.name',

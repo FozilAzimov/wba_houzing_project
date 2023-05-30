@@ -175,7 +175,7 @@ export default function AddNewHouse () {
               <SelectAntd.Option value={''}>Select Category</SelectAntd.Option>
               {
                 category?.map(value => {
-                  return <SelectAntd.Option onChange={formik.handleChange} key={value?.id} value={value?.id}>
+                  return <SelectAntd.Option onChange={formik.handleChange} key={value.id} value={value?.id}>
                     {value?.name || 'Select'}
                   </SelectAntd.Option>
                 })

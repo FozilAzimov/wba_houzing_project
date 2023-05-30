@@ -38,6 +38,10 @@ width: 920px;
 height: 409px;
 padding: 30px;
 background: #fff;
+box-shadow: 0px 20px 38px rgba(0, 0, 0, 0.06),
+0px 7px 46px rgba(0, 0, 0, 0.06),
+0px 8px 15px rgba(0, 0, 0, 0.06);
+border-radius: 5px;
 `
 
 const Section = styled.div`

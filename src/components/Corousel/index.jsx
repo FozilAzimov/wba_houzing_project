@@ -14,6 +14,7 @@ import {
   Icons,
   Img,
 } from './style';
+import Button from '../Generic/Button';
 
 export default function HomeCrousel () {
 
@@ -52,6 +53,7 @@ export default function HomeCrousel () {
           </Details.Item>
         </Details>
         <Content.Price>$5,250/mo</Content.Price>
+        <Button type='dark' minWidth={180}>Read More</Button>
       </Content>
       <Arrow arrow='right' onClick={onMove} data-name='right' />
     </Container>

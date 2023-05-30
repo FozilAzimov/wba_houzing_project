@@ -8,8 +8,8 @@ export default function Root () {
     <Routes>
       <Route element={<Navbar />}>
         {
-          navbar.map(({ element, path, id }) => {
-            return <Route key={id} path={path} element={element} />
+          navbar.map(({ element, path }, index) => {
+            return <Route key={index} path={path} element={element} />
           })
         }
       </Route>
