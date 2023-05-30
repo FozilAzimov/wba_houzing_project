@@ -1,4 +1,5 @@
 import {
+  Blur,
   CheckBox,
   Container,
   Content,
@@ -8,6 +9,8 @@ import {
   Icon,
   IconBlur,
   Icons,
+  ImageContainer,
+  ImgWrapper,
   InputWrapper,
   Items,
   Line,
@@ -26,6 +29,8 @@ import {
 } from './style';
 
 import noImg from '../../assets/imgs/noUser.webp';
+import noImage from '../../assets/imgs/noimg.jpeg';
+import img from '../../assets/imgs/gallaryImg.jpg';
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -51,12 +56,32 @@ export default function HousItem () {
         setData(res?.data);
         window.scrollTo(0, 0);
       })
-    // eslint-disable-next-line react-hook/exhaustive-deps
+    // eslint-disable-next-line
   }, [params?.id]);
 
 
   return (
     <Container>
+      <ImageContainer>
+        <ImageContainer.Main src={(data?.attachments && data?.attachments[0]?.imgPath) || noImage} />
+        <ImgWrapper>
+          {data?.attachments && data?.attachments?.slice(1, 5).map((value, index) => {
+            return (data?.attachments.length > 5 && index === 3)
+              ? (<Blur.Container>
+                <ImageContainer.SubImg
+                  key={index}
+                  src={value?.imgPath || noImage} />
+                <Blur>+{data?.attachments.length - 5}</Blur>
+              </Blur.Container>)
+              : (
+                <ImageContainer.SubImg
+                  key={index}
+                  src={value?.imgPath || noImage} />
+              )
+          })}
+
+        </ImgWrapper>
+      </ImageContainer>
       <Wrapper>
         <WrapperLeft>
           <Content>

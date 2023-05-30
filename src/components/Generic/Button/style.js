@@ -21,6 +21,12 @@ const getType = ({ type }) => {
         border: 'none',
         color: '#fff'
       };
+    case 'black':
+      return {
+        background: '#0D263B',
+        border: 'none',
+        color: '#fff'
+      };
     default:
       return {
         background: '#0061DF',
@@ -42,7 +48,8 @@ justify-content: center;
 align-items: center;
 border-radius: 2px;
 min-width: ${({ minWidth }) => minWidth ? `${minWidth}px` : '120px'};
-cursor: pointer;
+opacity:${({ disabled }) => disabled ? .7 : 1};
+cursor:${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
 transition: all .1s;
 font-size: ${({ fontSize }) => (fontSize ? `${fontSize}px` : '14px')};
 width: ${getWidth};

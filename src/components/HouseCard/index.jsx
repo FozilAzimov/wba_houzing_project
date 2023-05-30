@@ -10,11 +10,13 @@ import {
   Icons,
   Img,
   LoveBack,
+  Position,
   Wrapper,
 } from './style';
 
 import { message } from 'antd';
 import { PropertiesContext } from '../../context/properties';
+import Button from '../Generic/Button';
 
 export default function HouseCard ({ data = {}, gap, onClick }) {
   const { REACT_APP_SECRET_URL: url } = process.env;
@@ -54,6 +56,10 @@ export default function HouseCard ({ data = {}, gap, onClick }) {
   return (
     <Wrapper gap={gap}>
       <Container onClick={onClick}>
+        <Position>
+          <Button width={73} minWidth={73} fontSize={10} height={23}>FEATURED</Button>
+          <Button width={73} minWidth={73} fontSize={10} height={23} type={'black'}>FOR SALE</Button>
+        </Position>
         <Img src={(attachments && attachments[0]?.imgPath) || noImg} />
         <Content top>
           <div className="subTitle inline">{city}, {country}, {description}</div>

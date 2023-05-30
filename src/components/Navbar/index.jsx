@@ -24,12 +24,9 @@ export default function Navbar () {
 
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
-  const [drop, setDrop] = useState(false);
 
   const onClick = () => {
-    if (token) {
-      drop ? setDrop(false) : setDrop(true);
-    }
+    if (token) { }
     else {
       navigate('/signin')
     }
@@ -50,7 +47,6 @@ export default function Navbar () {
       label: (
         <Menu>
           <List onClick={onClicked} data-name='myprofile'>My profile</List>
-          <List onClick={onClicked} data-name='myproperties'>My properties</List>
           <List onClick={onClicked} data-name='favorites'>Favourites</List>
           <List onClick={onClicked} data-name='logout'>Log out</List>
         </Menu>
@@ -82,7 +78,7 @@ export default function Navbar () {
               }
             </Section>
             <Dropdown
-              menu={{ items }} trigger={['click']} open={drop}
+              menu={{ items }} trigger={['click']}
             >
               {
                 token

@@ -14,6 +14,7 @@ Icons.Bath = styled(bath)``;
 Icons.Garage = styled(garage)``;
 Icons.Ruler = styled(ruler)``;
 Icons.Resize = styled(resize)``;
+
 Icons.Love = styled(love)`
 & path{
   fill: ${({ favorite }) => favorite ? '#fff' : '#696969'};
@@ -30,6 +31,7 @@ padding: ${({ gap }) => gap && `${gap}px`};
 `
 
 const Container = styled.div`
+position: relative;
 height: 429px;
 width: 100%;
 max-width: 380px;
@@ -102,6 +104,19 @@ margin-left: 20px;
 }
 `
 
+const Position = styled.div`
+position: absolute;
+top: 0;
+left: 0;
+z-index: 10;
+display: flex;
+justify-content: space-between;
+width: 100%;
+max-width: 380px;
+min-width: 330px;
+padding: 20px;
+`
+
 export {
   Container,
   Content,
@@ -109,6 +124,7 @@ export {
   Divider,
   Icons,
   Img,
+  Position,
   LoveBack,
   Wrapper,
 };

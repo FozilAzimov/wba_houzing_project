@@ -210,7 +210,62 @@ display: flex;
 align-items: center;
 `
 
+const ImageContainer = styled.div`
+display: flex;
+gap: 20px;
+width: 100%;
+max-width: 1440px;
+padding: var(--padding);
+margin: auto;
+margin-top: 24px;
+`
+
+ImageContainer.Main = styled.img`
+width: 100%;
+max-width: 580px;
+max-height: 400px;
+`
+
+const ImgWrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+`
+
+ImageContainer.SubImg = styled.img`
+width: 100%;
+max-width: 280px;
+max-height: 190px;
+`
+
+const Blur = styled.div`
+position: absolute;
+width: 100%;
+left:0;
+right:0;
+bottom:0;
+top:0;
+background: rgba(0,0,0,.65);
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 36px;
+color: #FFFFFF;
+
+`
+
+Blur.Container = styled.div`
+position: relative;
+width: 100%;
+max-width: 280px;
+max-height: 150px;
+`
+
 export {
+  Blur,
   Container,
   Content,
   CheckBox,
@@ -220,6 +275,8 @@ export {
   Icon,
   IconBlur,
   Icons,
+  ImageContainer,
+  ImgWrapper,
   InputWrapper,
   Items,
   Line,

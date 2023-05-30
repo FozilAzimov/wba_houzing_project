@@ -54,7 +54,15 @@ export const navbar = [
     id: useUniqueId,
     element: <AddNewHousePage />,
     title: 'Add New House',
-    path: '/myproperties/newhouse',
+    path: '/myprofile/newhouse',
+    private: true,
+    hidden: true
+  },
+  {
+    id: useUniqueId,
+    element: <AddNewHousePage />,
+    title: 'Add New House',
+    path: '/myprofile/edithouse/:id',
     private: true,
     hidden: true
   },

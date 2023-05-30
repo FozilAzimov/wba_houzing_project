@@ -8,21 +8,24 @@ import {
 
 import { useLocation, useNavigate } from 'react-router-dom';
 import HouseCard from '../HouseCard';
-import useRequest from '../../hooks/useRequest';
 import Button from '../Generic/Button';
 
 export default function Properties () {
+  const { REACT_APP_SECRET_URL: url } = process.env;
 
   const { search } = useLocation();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const request = useRequest();
 
   useEffect(() => {
-    request({ url: `/houses/list${search}` }).then(res => {
-      setData(res?.data || []);
-    })
-    // eslint-disable-next-line react-hook/exhaustive-deps
+    fetch(`${url}/houses/list${search}`, {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then(res => res.json())
+      .then(res => setData(res?.data || []))
+    // eslint-disable-next-line
   }, [search]);
 
   const onSelect = (id) => {

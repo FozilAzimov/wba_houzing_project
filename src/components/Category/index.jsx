@@ -25,13 +25,16 @@ export default function Category () {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`${url}/houses/list`)
+    fetch(`${url}/categories/list`, {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((res) => setData(res?.data || []))
-    // eslint-disable-next-line react-hook/exhaustive-deps
-  }, [])
-
-  console.log(data);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <Container>

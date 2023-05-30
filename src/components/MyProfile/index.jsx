@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import {
   AntTable,
@@ -14,19 +14,39 @@ import {
 import nouser from "../../assets/imgs/nouser.jpeg";
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../Generic';
-import useRequest from '../../hooks/useRequest';
+import { useQuery } from 'react-query';
+import { message } from 'antd';
 
 export default function MyProfile () {
+  const { REACT_APP_SECRET_URL: url } = process.env;
 
-  const [data, setData] = useState([]);
   const navigate = useNavigate();
-  const request = useRequest();
-  useEffect(() => {
-    request({ url: `/houses/list` }).then((res) => {
-      setData(res?.data || []);
-    })
-    // eslint-disable-next-line react-hook/exhaustive-deps
-  }, []);
+
+  const { data, refetch } = useQuery([], () => {
+    return (
+      fetch(`${url}/houses/me`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }).then(res => res.json()));
+  });
+
+  const onDelete = (id) => {
+    fetch(`${url}/houses/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then(res => res.json())
+      .then(res => {
+        if (res.success) {
+          refetch();
+          message.info('House Deleted');
+        }
+      });
+  }
 
   const columns = [
     {
@@ -40,14 +60,14 @@ export default function MyProfile () {
               (data?.country === 'string' || data?.country) ? "Uzbekiston" : data?.country
             }</div>
             <br />
-            <div className="info"><s>{data?.salePrice}</s></div>
-            <div className="subTitle">{data?.price}</div>
+            <div className="info"><s>{data?.salePrice} $</s></div>
+            <div className="subTitle">{data?.price} $</div>
           </User>
           <Button width={71} height={23} fontSize={10} minWidth={71}>FOR SALE</Button>
         </User>
       },
       key: 'category.name',
-      width: 450,
+      width: 500,
     },
     {
       title: <div className="subTitle">Year Built</div>,
@@ -65,19 +85,25 @@ export default function MyProfile () {
       title: <div className="subTitle" >Email</div>,
       render: (data) => <span>{data?.user?.email}</span>,
       key: 'user.email',
-      width: 300,
+      width: 250,
     },
     {
       title: <div className="subTitle" >Action</div>,
       render: (data) => {
         return <FonIcon>
-          <Icons.Edit />
+          <Icons.Edit onClick={(event) => {
+            event.stopPropagation();
+            return navigate(`/myprofile/edithouse/${data?.id}`)
+          }} />
           <FonIcon.Content>
-            <Icons.Del />
+            <Icons.Del onClick={(event) => {
+              event.stopPropagation();
+              onDelete(data?.id)
+            }} />
           </FonIcon.Content>
         </FonIcon>
       },
-      key: 'price',
+      key: 'action',
       width: 100,
     },
   ]
@@ -85,14 +111,23 @@ export default function MyProfile () {
   return (
     <Wrapper>
       <Items>
-        <div style={{ textAlign: 'start' }} className="title">My Properties</div>
+        <div style={{ textAlign: 'start' }} className="title">My Profile</div>
         <div style={{ textAlign: 'start' }} className="title">
-          <Button onClick={() => navigate(`/myproperties/newhouse`)}>Add House</Button>
+          <Button onClick={() => navigate(`/myprofile/newhouse`)}>Add House</Button>
         </div>
       </Items>
       <Container>
 
-        <AntTable dataSource={data} columns={columns} />
+        <AntTable
+          onRow={(record) => {
+            return {
+              onClick: () => {
+                navigate(`/properties/${record?.id}`)
+              }
+            }
+          }}
+          dataSource={data?.data}
+          columns={columns} />
 
       </Container>
     </Wrapper>

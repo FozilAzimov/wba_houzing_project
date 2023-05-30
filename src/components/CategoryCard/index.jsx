@@ -12,14 +12,14 @@ import {
 
 export default function CategoryCard ({ onClick, data = {} }) {
 
-  const { category } = data;
+  const { name } = data;
 
   return (
     <Container onClick={onClick}>
       <Img src={categoryImg || noImg} />
       <BlurCategory />
       <Content top>
-        {category?.name || `Category name`}
+        {(name === 'string' || !name) ? 'Hovli' : name}
       </Content>
     </Container>
   )

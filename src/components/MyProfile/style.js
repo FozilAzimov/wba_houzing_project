@@ -6,9 +6,19 @@ import { ReactComponent as del } from "../../assets/icons/delete.svg";
 const Icons = styled.div``;
 Icons.Edit = styled(edit)`
 cursor: pointer;
+:active{
+  & path{
+    fill: blue;
+  }
+}
 `;
 Icons.Del = styled(del)`
 cursor: pointer;
+:active{
+  & path{
+    fill: red;
+  }
+}
 `;
 
 const Wrapper = styled.div`
@@ -57,14 +67,15 @@ min-width: ${({ flex }) => flex ? '220px' : '100%'};
 `
 
 const UserImg = styled.img`
-width: 113px;
+width: 150px;
 height: 113px;
 border-radius: 3px;
-cursor: pointer;
 margin-right: 18px;
 `
 
-const AntTable = styled(Table)``;
+const AntTable = styled(Table)`
+cursor: pointer;
+`;
 
 export {
   AntTable,

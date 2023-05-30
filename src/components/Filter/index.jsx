@@ -14,15 +14,15 @@ import { Dropdown } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import uzeReplace from '../../hooks/useReplace';
 import useSearch from '../../hooks/useSearch';
-import useRequest from '../../hooks/useRequest';
 
 export default function Filter () {
+  const { REACT_APP_SECRET_URL: url } = process.env;
+
 
   const [drop, setDrop] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const query = useSearch();
-  const request = useRequest();
 
   const countryRef = useRef();
   const regionRef = useRef();
@@ -34,13 +34,14 @@ export default function Filter () {
   const minpriceRef = useRef();
   const maxpriceRef = useRef();
 
-  const getDrop = () => drop ? setDrop(false) : setDrop(true);
   const onChange = ({ target: { name, value } }) => {
     navigate(`${location.pathname}${uzeReplace(name, value)}`)
   }
+
   const onChangeSort = (sort) => {
     navigate(`/properties/${uzeReplace('sort', sort)}`)
   }
+
   const onChangeCategory = (category_id) => {
     navigate(`/properties/${uzeReplace('category_id', category_id)}`)
   }
@@ -49,10 +50,14 @@ export default function Filter () {
   const [value, setValue] = useState();
 
   useEffect(() => {
-    request({ url: `/houses/list` }).then(res => {
-      setData(res?.data || []);
-    })
-    // eslint-disable-next-line react-hook/exhaustive-deps
+    fetch(`${url}/categories/list`, {
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+      }
+    }).then(res => res.json())
+      .then(res => setData(res?.data || []));
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -63,7 +68,7 @@ export default function Filter () {
   const items = [
     {
       label: (<MenuWrapper>
-        <h1 className='subtitle'>Address</h1>
+        <h1 className='subTitle'>Address</h1>
         <Section>
           <Input
             onChange={onChange}
@@ -94,7 +99,7 @@ export default function Filter () {
             placeholder='Zip Code' />
         </Section>
 
-        <h1 className='subtitle'>Apartment info</h1>
+        <h1 className='subTitle'>Apartment info</h1>
         <Section>
           <Input
             onChange={onChange}
@@ -118,14 +123,14 @@ export default function Filter () {
             {
               data.map(value => {
                 return <SelectAntd.Option key={value.id} value={value?.id}>
-                  {value?.category?.name || 'Select'}
+                  {value?.name || 'Select'}
                 </SelectAntd.Option>
               })
             }
           </SelectAntd>
         </Section>
 
-        <h1 className='subtitle'>Price</h1>
+        <h1 className='subTitle'>Price</h1>
         <Section>
           <Input onChange={onChange}
             defaultValue={query.get('min_price')}
@@ -144,8 +149,8 @@ export default function Filter () {
     <Container>
       <Wrapper>
         <Input icon={<Icons.Houz />} placeholder={'Enter an address, neighborhood, city, or Zip code'} />
-        <Dropdown menu={{ items }} trigger={['click']} open={drop}>
-          <Button type='light' onClick={getDrop}><Icons.Filter /> Advenced</Button>
+        <Dropdown menu={{ items }} trigger={['click']}>
+          <Button type='light'><Icons.Filter /> Advenced</Button>
         </Dropdown>
         <Button><Icons.Search /> Search</Button>
       </Wrapper>

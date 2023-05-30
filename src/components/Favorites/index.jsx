@@ -33,8 +33,7 @@ export default function Properties () {
     {
       onSuccess: () => dispatch({ type: 'refetch', payload: refetch }),
     }
-    // eslint-disable-next-line react-hook/exhaustive-deps
-  )
+  );
 
 
   const onSelect = (id) => {
