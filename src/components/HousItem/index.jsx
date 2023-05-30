@@ -30,7 +30,6 @@ import {
 
 import noImg from '../../assets/imgs/noUser.webp';
 import noImage from '../../assets/imgs/noimg.jpeg';
-import img from '../../assets/imgs/gallaryImg.jpg';
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';

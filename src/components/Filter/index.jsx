@@ -18,8 +18,6 @@ import useSearch from '../../hooks/useSearch';
 export default function Filter () {
   const { REACT_APP_SECRET_URL: url } = process.env;
 
-
-  const [drop, setDrop] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const query = useSearch();
