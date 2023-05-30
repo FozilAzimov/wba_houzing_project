@@ -28,7 +28,7 @@ export default function Navbar () {
   const onClick = () => {
     if (token) { }
     else {
-      navigate('/signin')
+      navigate('/signin');
     }
   }
 
