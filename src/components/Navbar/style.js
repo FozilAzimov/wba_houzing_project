@@ -86,7 +86,8 @@ font-size: 14px;
 line-height: 20px;
 color: #000;
 :hover{
-  color: red;
+  color: var(--backgroundPrimary);
+  cursor: pointer;
 }
 `
 

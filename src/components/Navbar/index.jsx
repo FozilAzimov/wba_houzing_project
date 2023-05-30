@@ -42,18 +42,6 @@ export default function Navbar () {
     }
   }
 
-  const items = [
-    {
-      label: (
-        <Menu>
-          <List onClick={onClicked} data-name='myprofile'>My profile</List>
-          <List onClick={onClicked} data-name='favorites'>Favourites</List>
-          <List onClick={onClicked} data-name='logout'>Log out</List>
-        </Menu>
-      )
-    }
-  ]
-
   return (
     <Container>
 
@@ -78,7 +66,16 @@ export default function Navbar () {
               }
             </Section>
             <Dropdown
-              menu={{ items }} trigger={['click']}
+              trigger={['click']}
+              dropdownRender={() => {
+                return (
+                  <Menu>
+                    <List onClick={onClicked} data-name='myprofile'>My profile</List>
+                    <List onClick={onClicked} data-name='favorites'>Favourites</List>
+                    <List onClick={onClicked} data-name='logout'>Log out</List>
+                  </Menu>
+                )
+              }}
             >
               {
                 token

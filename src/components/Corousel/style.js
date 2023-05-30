@@ -1,6 +1,45 @@
 import styled from "styled-components";
 
 import { ReactComponent as arrow } from "../../assets/icons/arrow.svg";
+import { ReactComponent as bed } from "../../assets/icons/bed.svg";
+import { ReactComponent as bath } from "../../assets/icons/bath.svg";
+import { ReactComponent as garage } from "../../assets/icons/garage.svg";
+import { ReactComponent as ruler } from "../../assets/icons/ruler.svg";
+
+const Icons = styled.div``;
+
+Icons.Bed = styled(bed)`
+  & path{
+    fill: #fff;
+  }
+  cursor: pointer;
+  margin: 6px 0;
+`;
+
+Icons.Bath = styled(bath)`
+  & path{
+    fill: #fff;
+  }
+  cursor: pointer;
+  margin: 6px 0;
+`;
+
+Icons.Garage = styled(garage)`
+  & path{
+    fill: #fff;
+  }
+  cursor: pointer;
+  margin: 6px 0;
+`;
+
+Icons.Ruler = styled(ruler)`
+  & path{
+    fill: #fff;
+  }
+  cursor: pointer;
+  margin: 6px 0;
+`;
+
 
 const Container = styled.div`
 height: fit-content;
@@ -99,10 +138,32 @@ line-height: 36px;
 letter-spacing: -0.02em;
 `
 
+const Details = styled.div`
+max-width: 337px;
+min-width: 300px;
+width: 100%;
+max-height: 47px;
+min-height: 40px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 24px 0;
+`
+
+Details.Item = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-between;
+`
+
+
 export {
   Arrow,
   Blur,
   Container,
   Content,
-  Img
+  Details,
+  Img,
+  Icons,
 };

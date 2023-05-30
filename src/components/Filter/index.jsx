@@ -63,94 +63,98 @@ export default function Filter () {
     resoult?.category?.name && setValue(resoult?.category?.name);
   }, [location?.search, data, query]);
 
-  const items = [
-    {
-      label: (<MenuWrapper>
-        <h1 className='subTitle'>Address</h1>
-        <Section>
-          <Input
-            onChange={onChange}
-            defaultValue={query.get('country')}
-            ref={countryRef}
-            name='country'
-            placeholder='Country' />
-
-          <Input
-            onChange={onChange}
-            defaultValue={query.get('region')}
-            ref={regionRef}
-            name='region'
-            placeholder='Region' />
-
-          <Input
-            onChange={onChange}
-            defaultValue={query.get('city')}
-            ref={cityRef}
-            name='address'
-            placeholder='City' />
-
-          <Input
-            onChange={onChange}
-            defaultValue={query.get('zip_code')}
-            ref={zipcodeRef}
-            name='zip_code'
-            placeholder='Zip Code' />
-        </Section>
-
-        <h1 className='subTitle'>Apartment info</h1>
-        <Section>
-          <Input
-            onChange={onChange}
-            defaultValue={query.get('room')}
-            ref={roomsRef}
-            name='room'
-            placeholder='Rooms' />
-
-          <SelectAntd
-            defaultValue={query.get('sort') || 'Select Sort'}
-            onChange={onChangeSort}>
-            <SelectAntd.Option value={''}>Select Sort</SelectAntd.Option>
-            <SelectAntd.Option value={'asc'}>O'suvchi</SelectAntd.Option>
-            <SelectAntd.Option value={'desc'}>Kamayuvchi</SelectAntd.Option>
-          </SelectAntd>
-
-          <SelectAntd
-            defaultValue={value || 'Select Category'}
-            onChange={onChangeCategory}>
-            <SelectAntd.Option value={''}>Select Category</SelectAntd.Option>
-            {
-              data.map(value => {
-                return <SelectAntd.Option key={value.id} value={value?.id}>
-                  {value?.name || 'Select'}
-                </SelectAntd.Option>
-              })
-            }
-          </SelectAntd>
-        </Section>
-
-        <h1 className='subTitle'>Price</h1>
-        <Section>
-          <Input onChange={onChange}
-            defaultValue={query.get('min_price')}
-            ref={minpriceRef} name='min_price'
-            placeholder='Min price' />
-          <Input onChange={onChange}
-            defaultValue={query.get('max_price')}
-            ref={maxpriceRef} name='max_price'
-            placeholder='Max price' />
-        </Section>
-      </MenuWrapper>)
-    }
-  ];
-
   return (
     <Container>
       <Wrapper>
+
         <Input icon={<Icons.Houz />} placeholder={'Enter an address, neighborhood, city, or Zip code'} />
-        <Dropdown menu={{ items }} trigger={['click']}>
-          <Button type='light'><Icons.Filter /> Advenced</Button>
+
+        <Dropdown trigger={['click']} dropdownRender={() => {
+          return (
+            <MenuWrapper>
+              <h1 className='subTitle'>Address</h1>
+              <Section>
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get('country')}
+                  ref={countryRef}
+                  name='country'
+                  placeholder='Country' />
+
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get('region')}
+                  ref={regionRef}
+                  name='region'
+                  placeholder='Region' />
+
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get('city')}
+                  ref={cityRef}
+                  name='address'
+                  placeholder='City' />
+
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get('zip_code')}
+                  ref={zipcodeRef}
+                  name='zip_code'
+                  placeholder='Zip Code' />
+              </Section>
+
+              <h1 className='subTitle'>Apartment info</h1>
+              <Section>
+                <Input
+                  onChange={onChange}
+                  defaultValue={query.get('room')}
+                  ref={roomsRef}
+                  name='room'
+                  placeholder='Rooms' />
+
+                <SelectAntd
+                  defaultValue={query.get('sort') || 'Select Sort'}
+                  onChange={onChangeSort}>
+                  <SelectAntd.Option value={''}>Select Sort</SelectAntd.Option>
+                  <SelectAntd.Option value={'asc'}>O'suvchi</SelectAntd.Option>
+                  <SelectAntd.Option value={'desc'}>Kamayuvchi</SelectAntd.Option>
+                </SelectAntd>
+
+                <SelectAntd
+                  defaultValue={value || 'Select Category'}
+                  onChange={onChangeCategory}>
+                  <SelectAntd.Option value={''}>Select Category</SelectAntd.Option>
+                  {
+                    data.map(value => {
+                      return <SelectAntd.Option key={value.id} value={value?.id}>
+                        {value?.name || 'Select'}
+                      </SelectAntd.Option>
+                    })
+                  }
+                </SelectAntd>
+              </Section>
+
+              <h1 className='subTitle'>Price</h1>
+              <Section>
+                <Input onChange={onChange}
+                  defaultValue={query.get('min_price')}
+                  ref={minpriceRef} name='min_price'
+                  placeholder='Min price' />
+                <Input onChange={onChange}
+                  defaultValue={query.get('max_price')}
+                  ref={maxpriceRef} name='max_price'
+                  placeholder='Max price' />
+              </Section>
+            </MenuWrapper>
+          )
+        }} >
+          <Button type='light'>
+            <Icons.Filter /> Advenced
+          </Button>
         </Dropdown>
+
         <Button><Icons.Search /> Search</Button>
+
       </Wrapper>
     </Container >
   )

@@ -10,6 +10,8 @@ import {
   Blur,
   Container,
   Content,
+  Details,
+  Icons,
   Img,
 } from './style';
 
@@ -35,6 +37,20 @@ export default function HomeCrousel () {
       <Content>
         <Content.Title>Skyper Pool Partment</Content.Title>
         <Content.Description>112 Glenwood Ave Hyde Park, Boston, MA</Content.Description>
+        <Details>
+          <Details.Item>
+            <Icons.Bed />Bed
+          </Details.Item>
+          <Details.Item>
+            <Icons.Bath />Bath
+          </Details.Item>
+          <Details.Item>
+            <Icons.Garage />Garage
+          </Details.Item>
+          <Details.Item>
+            <Icons.Ruler />Ruler
+          </Details.Item>
+        </Details>
         <Content.Price>$5,250/mo</Content.Price>
       </Content>
       <Arrow arrow='right' onClick={onMove} data-name='right' />
