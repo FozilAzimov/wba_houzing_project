@@ -61,6 +61,12 @@ body {
   color: #696969;
 }
 
+.content {
+  padding: 50px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
 :where(.css-dev-only-do-not-override-15rg2km).ant-dropdown .ant-dropdown-menu,
 :where(.css-dev-only-do-not-override-15rg2km).ant-dropdown-menu-submenu .ant-dropdown-menu {
   padding: 0;

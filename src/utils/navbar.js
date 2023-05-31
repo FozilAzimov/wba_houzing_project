@@ -3,6 +3,7 @@ import useUniqueId from "../hooks/useId";
 import RegisterPage from "../pages/Register";
 import MyProfilePage from "../pages/MyProfile";
 import AddNewHousePage from "../pages/AddNewHouse";
+import Loading from "../components/Loading";
 
 const HomePage = React.lazy(() => import('../pages/Home'));
 const PropertiesPage = React.lazy(() => import('../pages/Properties'));
@@ -12,7 +13,7 @@ const Favorites = React.lazy(() => import('../pages/Favorites'));
 export const navbar = [
   {
     id: useUniqueId,
-    element: <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+    element: <React.Suspense fallback={<React.Fragment><Loading /></React.Fragment>}>
       <HomePage />
     </React.Suspense>,
     title: 'Home',
@@ -22,7 +23,7 @@ export const navbar = [
   },
   {
     id: useUniqueId,
-    element: <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+    element: <React.Suspense fallback={<React.Fragment><Loading /></React.Fragment>}>
       <PropertiesPage />
     </React.Suspense>,
     title: 'Properties',
@@ -32,7 +33,7 @@ export const navbar = [
   },
   {
     id: useUniqueId,
-    element: <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+    element: <React.Suspense fallback={<React.Fragment><Loading /></React.Fragment>}>
       <HousItemPage />
     </React.Suspense>,
     title: 'HousItemPage',
@@ -42,7 +43,7 @@ export const navbar = [
   },
   {
     id: useUniqueId,
-    element: <React.Suspense fallback={<React.Fragment>Loading...</React.Fragment>}>
+    element: <React.Suspense fallback={<React.Fragment><Loading /></React.Fragment>}>
       <Favorites />
     </React.Suspense>,
     title: 'Favorites',

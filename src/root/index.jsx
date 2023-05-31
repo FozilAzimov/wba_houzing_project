@@ -2,6 +2,7 @@ import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { navbar } from '../utils/navbar';
 import Navbar from '../components/Navbar';
+import ErrorPage from '../components/ErrorPage';
 
 export default function Root () {
   return (
@@ -13,7 +14,7 @@ export default function Root () {
           })
         }
       </Route>
-      <Route path='*' element={<h1>404 Error. NOT FOUND</h1>} />
+      <Route path='*' element={<ErrorPage />} />
       <Route path='/' element={<Navigate to={'/home'} />} />
     </Routes>
   )
