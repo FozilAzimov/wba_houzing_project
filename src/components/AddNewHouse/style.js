@@ -20,7 +20,9 @@ margin-bottom: 32px;
 `
 
 const Section = styled.div`
-display: flex;
+display: ${({ wrap }) => wrap ? 'grid' : 'flex'};
+grid-auto-flow: row;
+grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
 flex-direction: ${({ column }) => column ? 'column' : 'row'};
 margin-top: ${({ flex }) => flex && '30px'};
 width: 100%;
@@ -30,8 +32,8 @@ margin-bottom: 20px;
 
 const SelectAntd = styled(Select)`
 width: 100%;
-min-width: 250px;
-max-width: 250px;
+min-width: 145px;
+max-width: 145px;
 height: 44px;
 color: var(--colorSecondary);
 `;

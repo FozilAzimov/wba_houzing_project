@@ -56,9 +56,7 @@ export default function MyProfile () {
           <UserImg src={(data?.attachments && data?.attachments[0]?.imgPath) || nouser} />
           <User flex>
             <div className="subTitle">{data?.category?.name || 'Aqlli uy'}</div>
-            <div className="info">{data?.city}, {
-              (data?.country === 'string' || data?.country) ? "Uzbekiston" : data?.country
-            }</div>
+            <div className="info">{data?.city}, {data?.country}</div>
             <br />
             <div className="info"><s>{data?.salePrice} $</s></div>
             <div className="subTitle">{data?.price} $</div>

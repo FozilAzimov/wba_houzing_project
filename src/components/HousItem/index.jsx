@@ -58,6 +58,9 @@ export default function HousItem () {
     // eslint-disable-next-line
   }, [params?.id]);
 
+  data?.attachments?.forEach(value => {
+    console.log('img Link', '------', value?.imgPath);
+  })
 
   return (
     <Container>

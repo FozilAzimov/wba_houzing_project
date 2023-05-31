@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   IconDel,
@@ -22,20 +22,23 @@ export default function AddNewHouse () {
   const [category, setCategory] = useState([]);
   const [img, setImg] = useState('');
   const request = useRequest();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
+  // Initial Values
   const [initial, setInitial] = useState({
     houseDetails: {},
     homeAmenitiesDto: {},
     componentsDto: {},
     status: true,
+    categoryId: 1,
+    name: 'webbrain',
+    attachments: images,
     locations: {
       latitude: 0,
       longitude: 0
     },
   });
-  const ID = useId();
-  const navigate = useNavigate();
-  const { id } = useParams();
 
   // singlHouse
   useEffect(() => {
@@ -61,6 +64,7 @@ export default function AddNewHouse () {
     // eslint-disable-next-line
   }, []);
 
+  // Formik
   const formik = useFormik({
     initialValues: initial,
     enableReinitialize: true,
@@ -72,25 +76,22 @@ export default function AddNewHouse () {
         token: true,
         body: {
           ...values,
-          categoryId: 1,
-          name: 'webbrain',
-          attachments: images,
         },
       }).then((res) => {
         if (res?.success) {
           message.info('House Added');
           navigate("/myprofile");
         }
-        else message.warning('There is an error in the information being added!');
+        else message.error('Error, There is an error in the information being added!');
       });
-
     }
   });
 
-
   const addImg = () => {
-    setImages([...images, { imgPath: img, id: `${ID}${img}` }]);
-    setImg('');
+    if (img) {
+      setImages([...images, { imgPath: img }]);
+      setImg('');
+    }
   }
 
   return (
@@ -125,8 +126,9 @@ export default function AddNewHouse () {
           </Section>
 
           <h1 className='subTitle'>Apartment info</h1>
-          <Section>
+          <Section wrap>
             <Input
+              width={100}
               type='number'
               name='houseDetails.area'
               placeholder='Area'
@@ -134,6 +136,7 @@ export default function AddNewHouse () {
               onChange={formik.handleChange}
             />
             <Input
+              width={100}
               type='number'
               name='houseDetails.bath'
               placeholder='Bath'
@@ -141,6 +144,7 @@ export default function AddNewHouse () {
               onChange={formik.handleChange}
             />
             <Input
+              width={100}
               type='number'
               name='houseDetails.beds'
               placeholder='Beds'
@@ -148,13 +152,15 @@ export default function AddNewHouse () {
               onChange={formik.handleChange}
             />
             <Input
+              width={100}
               type='number'
-              name='houseDetails.yearBuild'
+              name='houseDetails.yearBuilt'
               placeholder='Year Build'
               value={formik.values?.houseDetails?.yearBuilt}
               onChange={formik.handleChange}
             />
             <Input
+              width={100}
               type='number'
               name='houseDetails.garage'
               placeholder='Garage'
@@ -162,6 +168,7 @@ export default function AddNewHouse () {
               onChange={formik.handleChange}
             />
             <Input
+              width={100}
               type='number'
               name='houseDetails.room'
               placeholder='Room'
@@ -169,13 +176,11 @@ export default function AddNewHouse () {
               onChange={formik.handleChange}
             />
 
-            <SelectAntd
-              defaultValue={'Select Category'}
-            >
+            <SelectAntd defaultValue={'Select Category'}>
               <SelectAntd.Option value={''}>Select Category</SelectAntd.Option>
               {
                 category?.map(value => {
-                  return <SelectAntd.Option onChange={formik.handleChange} key={value.id} value={value?.id}>
+                  return <SelectAntd.Option onChange={formik.handleChange} key={value.id}>
                     {value?.name || 'Select'}
                   </SelectAntd.Option>
                 })
