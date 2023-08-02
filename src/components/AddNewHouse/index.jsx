@@ -70,12 +70,14 @@ export default function AddNewHouse () {
     enableReinitialize: true,
 
     onSubmit: (values) => {
+      console.log(values, 'vll');
       request({
         url: id ? `/houses/${id}` : `/houses`,
         method: id ? "PUT" : "POST",
         token: true,
         body: {
           ...values,
+          attachments: images
         },
       }).then((res) => {
         if (res?.success) {
