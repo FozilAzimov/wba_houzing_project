@@ -38,6 +38,7 @@ export default function Navbar () {
       navigate(`/home`);
     }
     else {
+      console.log(name);
       navigate(`${name}`);
     }
   }

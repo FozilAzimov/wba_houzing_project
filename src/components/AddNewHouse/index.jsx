@@ -16,7 +16,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useRequest from '../../hooks/useRequest';
 
 export default function AddNewHouse () {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
 
   const [images, setImages] = useState([]);
   const [category, setCategory] = useState([]);

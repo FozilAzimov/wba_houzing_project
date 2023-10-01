@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import HouseCard from '../HouseCard';
 
 export default function Recent () {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
 
   const settings = {
     className: "center",

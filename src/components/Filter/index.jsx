@@ -16,7 +16,7 @@ import uzeReplace from '../../hooks/useReplace';
 import useSearch from '../../hooks/useSearch';
 
 export default function Filter () {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
 
   const navigate = useNavigate();
   const location = useLocation();

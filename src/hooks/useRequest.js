@@ -1,5 +1,5 @@
 
-const { REACT_APP_SECRET_URL } = process.env;
+const URL = 'http://localhost:8081/api/v1';
 
 export const useRequest = () => {
 
@@ -13,7 +13,7 @@ export const useRequest = () => {
       body: JSON.stringify(body),
     };
 
-    return fetch(`${me ? 'http://localhost:8081/api' : REACT_APP_SECRET_URL}${url}`, options)
+    return fetch(`${me ? 'http://localhost:8081/api' : URL}${url}`, options)
       .then((res) => res.json());
   };
 
@@ -21,3 +21,4 @@ export const useRequest = () => {
 };
 
 export default useRequest;
+// http://localhost:8080/api/public/auth/login

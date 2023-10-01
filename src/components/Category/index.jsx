@@ -7,7 +7,7 @@ import Slider from "react-slick";
 import { useNavigate } from 'react-router-dom';
 
 export default function Category () {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
 
   const settings = {
     className: "center",
@@ -45,7 +45,7 @@ export default function Category () {
 
       <Slider {...settings}>
         {
-          data.map(value => {
+          data?.map(value => {
             return <CategoryCard
               key={value.id}
               onClick={() => navigate(`/properties?category_id=${value?.id}`)}

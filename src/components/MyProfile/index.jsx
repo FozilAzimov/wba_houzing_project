@@ -18,7 +18,7 @@ import { useQuery } from 'react-query';
 import { message } from 'antd';
 
 export default function MyProfile () {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
 
   const navigate = useNavigate();
 

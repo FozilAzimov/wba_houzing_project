@@ -19,7 +19,7 @@ import { PropertiesContext } from '../../context/properties';
 import Button from '../Generic/Button';
 
 export default function HouseCard ({ data = {}, gap, onClick }) {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
 
   const [state] = useContext(PropertiesContext);
 

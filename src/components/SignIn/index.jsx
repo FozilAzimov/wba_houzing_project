@@ -38,6 +38,7 @@ export default function SignIn () {
   }
 
   const onSubmit = () => {
+    console.log(body);
     request({ url: `/public/auth/login`, method: 'POST', body, me: true })
       .then((res) => {
         if (res?.authenticationToken) {

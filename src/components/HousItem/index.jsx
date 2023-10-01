@@ -39,7 +39,7 @@ import Input from '../Generic/Input';
 import Button from '../Generic/Button';
 
 export default function HousItem () {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
   const params = useParams();
   const [data, setData] = useState({});
 

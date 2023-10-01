@@ -14,7 +14,7 @@ import { PropertiesContext } from '../../context/properties';
 
 
 export default function Properties () {
-  const { REACT_APP_SECRET_URL: url } = process.env;
+  const url = 'http://localhost:8081/api/v1';
 
   const { search } = useLocation();
   const navigate = useNavigate();
